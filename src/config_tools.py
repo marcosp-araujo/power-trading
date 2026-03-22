@@ -1,6 +1,5 @@
 import json
 import os
-import re
 import humanize
 import datetime as dt
 import pandas as pd
@@ -23,13 +22,13 @@ class Config_Manager:
   start_time: str = ""      # First time for slicing the raw data
   end_time: str = ""        # Last time for slicing the raw data
   train_size: float = 0.7 # train size between 0 and 1
-  horizon_string: str = "" # To save horizon in human readable format
+  horizon_string: str = field(init=False) # To save horizon in human readable format
   
   # --- Windowing / Dataset ---
   window_size: int = 48       # size of the input window for the model
   batch_size: int = 32        # batch size for training 
   shuffle_buffer: int = 1000  # buffer size for shuffling the dataset
-  horizon:int = 1             # Time steps ahead to be forecasted
+  horizon:int = 4             # Time steps ahead to be forecasted
   
   # --- Training ---
   output_size: float = 1      # number of output features (1 for univariate forecasting)

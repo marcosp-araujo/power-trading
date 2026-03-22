@@ -23,7 +23,7 @@ The key performance indicators below highlight the goodness of fit of the model 
 
 The NMAE is calculated as:
 
-> NMAE = MAE / Capacity,
+        NMAE = MAE / Capacity,
 
 where the capacity = {results["capacity"]:.1f} MW, defined as the maximum wind power observed in the dataset.
 """)

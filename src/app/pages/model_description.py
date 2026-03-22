@@ -1,6 +1,7 @@
 import streamlit as st
 from src.app.load import load_app_data
-from src.app.app_config import config
+from src.app.app_config import load_config
+
 
 st.markdown("""
 ### Model Description
@@ -9,7 +10,7 @@ This model is a **1D CNN for time-series forecasting** that learns temporal patt
 """)
 
 data, model = load_app_data()
-
+config = load_config()
 col1, col2 = st.columns(2)
 
 with col1:

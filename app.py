@@ -1,12 +1,12 @@
 import streamlit as st
 from pathlib import Path
 
+st.set_page_config(page_title="Time Series Forecasting", 
+                   page_icon="📈")
+
 if __name__ == "__main__":
 
     st.markdown("""<style>.block-container {padding-top: 2rem;}</style>""", unsafe_allow_html=True)
-
-    st.set_page_config(page_title="Time Series Forecasting", 
-                       page_icon="📈")
 
     pages_dir = Path("src/app/pages")
 

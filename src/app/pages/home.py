@@ -2,8 +2,9 @@ import streamlit as st
 from src import plot
 from src.plot import plot_obj
 from src.app.load import load_app_data
-from src.app.app_config import config
+from src.app.app_config import load_config
 
+config = load_config()
 
 st.header("Power Trading Forecasting Dashboard")
 

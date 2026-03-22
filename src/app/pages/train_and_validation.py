@@ -1,13 +1,16 @@
 import streamlit as st
 from src import plot
 from src.app.load import load_app_data
-from src.app.app_config import config
+from src.app.app_config import load_config
+
 
 data, model = load_app_data()
 
 st.header("Train and Test Datasets")
 
 st.write("The whole dataset was split into 70% for training and 30% for validation as show in the figure below.")
+
+config = load_config()
 
 plot.train_test(data, config, streamlit=True)
 

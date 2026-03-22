@@ -40,6 +40,11 @@ Linux/macOS:
 source .venv/bin/activate
 ```
 
+Install the requirements
+```
+uv pip install -r .\requirements.txt
+```
+
 # 💻 Running the Software
 ## Model Training & Backend
 To train a new model or load existing weights for evaluation, execute the main script:

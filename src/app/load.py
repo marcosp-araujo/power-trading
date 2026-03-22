@@ -1,6 +1,6 @@
 import streamlit as st
 from src import data_tools, model_tools
-from src.app.app_config import config
+from src.app.app_config import load_config
 
 @st.cache_resource
 def load_data(config):
@@ -11,6 +11,8 @@ def load_model(_data, config):
     return model_tools.Model_Manager(_data, config)
 
 def load_app_data():
+
+    config = load_config()
 
     if "data" not in st.session_state:
         st.session_state.data = load_data(config)
