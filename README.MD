@@ -1,13 +1,13 @@
 # 🌬️ Wind Power Forecasting
 
-This repository provides an Artificial Intelligence (AI) solution for wind power forecasting in the **Netherlands**. By analyzing 12-hour rolling windows of historical data, the model predicts generation for the next **15-minute**. 
+This repository provides an Artificial Intelligence (AI) solution for wind power forecasting in the **Netherlands**. By analyzing 12-hour rolling windows of historical data, the model predicts generation for the next **1-hour**. 
 
 This tool can be used to assist energy traders in optimizing intraday positions and minimizing imbalance settlement costs on the Dutch grid.
 
 ---
 
 ## 🚀 Features
-* **Time Horizon:** 15-minute ahead forecasting.
+* **Time Horizon:** 1 hour ahead forecasting.
 * **Architecture:** Deep Neural Network optimized with SGD & Momentum.
 * **Robust Metrics:** Performance tracking **Huber Loss** to handle high-capacity volatility (0-3000 MW).
 * **Interactive Dashboard:** A Streamlit interface to audit model stability and visualize real-time predictions.
