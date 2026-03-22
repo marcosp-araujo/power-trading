@@ -1,7 +1,6 @@
 import streamlit as st
-from src import plot
 from src.app.load import load_app_data
-
+from src.app.app_config import config
 
 st.markdown("""
 ### Model Description
@@ -9,7 +8,7 @@ st.markdown("""
 This model is a **1D CNN for time-series forecasting** that learns temporal patterns from sliding windows of historical data. It consists of **two 1D convolutional layers** (32 filters and 16 filters, kernel size 5) with ReLU activation to extract features from the input sequence. The convolutional outputs are **flattened** and passed through a **dense layer** to produce the forecast, which is then **reshaped** to match the output sequence length. The model is designed to predict multiple future steps simultaneously and is trained using Huber loss function, and mean absolute error (MAE) metric for evaluation.
 """)
 
-config, data, model = load_app_data()
+data, model = load_app_data()
 
 col1, col2 = st.columns(2)
 

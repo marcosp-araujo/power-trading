@@ -1,8 +1,5 @@
 
 import sqlite3
-import re
-import humanize
-import datetime as dt
 import pandas as pd
 import tensorflow as tf
 from src.config_tools import Config_Manager
@@ -25,7 +22,6 @@ class Data_Manager:
         self.read_data()
         self.preprocessing()
         self.split_train_test()
-        self.step_to_time()
         
         if streamlit is False:
             self.x_train_window = self.windowed_dataset(self.x_train)
@@ -120,18 +116,6 @@ class Data_Manager:
         dataset_window = dataset.prefetch(tf.data.AUTOTUNE)
 
         return dataset_window
-    
-    def step_to_time(self):
-        # e.g., '15' from '15min'
-        freq_str = str(self.time_train.dt.freq)
-        base_min = int(re.search(r'\d+', freq_str).group() or 1)
-        
-        # Total duration
-        total_min = self.config.horizon * base_min
-        delta = dt.timedelta(minutes=total_min)
-
-        # 'precisedelta' turns 60 min" into "1 hour"
-        self.config.horizon_string = humanize.precisedelta(delta)
 
 def get_table_from_db(db_file_path:str, 
                       table_name:str, 

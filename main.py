@@ -9,6 +9,7 @@ if __name__ == "__main__":
                     mode="train", # "train" or "load"
                     model_name="model_v1_6_w12h_1h_ahead",
                     data_path="data/time_series_15min.parquet",
+                    time_resolution=15, # Data time resolution in minuts
                     series_column="NL_wind_generation_actual",
                     time_column="cet_cest_timestamp",
                     start_time="2016-01-01",

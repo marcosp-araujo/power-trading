@@ -2,14 +2,14 @@ import streamlit as st
 from src import plot
 from src.plot import plot_obj
 from src.app.load import load_app_data
+from src.app.app_config import config
 
-config, data, model = load_app_data()
 
 st.header("Power Trading Forecasting Dashboard")
 
 st.write(
 "This dashboard template showcases a Short-Term Wind Power Forecasting model to support Intraday Energy Market. "
-f"Utilizing a Neural Network architecture, the system predicts generation {data.config.horizon_string} ahead by analyzing a 12-hour rolling window of historical data."
+f"Utilizing a Neural Network architecture, the system predicts generation {config.horizon_string} ahead by analyzing a 12-hour rolling window of historical data."
 )
 
 st.write(
@@ -20,6 +20,8 @@ st.write(
 )
 
 st.write("Use the sidebar to audit the model’s convergence, forecast, and evaluate its performance.")
+
+data, model = load_app_data()
 
 # Dataset
 plot.series(

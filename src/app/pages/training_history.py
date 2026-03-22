@@ -7,7 +7,7 @@ st.subheader("Training Evaluation")
 st.write("This section presents the Loss and Mean Absolute Error (MAE) for the training and validation datasets across all training epochs. " 
     "The upper plot provides the full training history, while the lower plot zooms in on the final 50% of epochs to highlight fine-grained trends.")
 
-config, data, model = load_app_data()
+data, model = load_app_data()
 
 plot.metrics_history(model.history, streamlit=True)
 

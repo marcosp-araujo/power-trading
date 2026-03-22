@@ -1,5 +1,8 @@
 import json
 import os
+import re
+import humanize
+import datetime as dt
 import pandas as pd
 from dataclasses import dataclass, field, asdict
 from typing import Literal
@@ -14,6 +17,7 @@ class Config_Manager:
   data_path: str = ""         # path to the raw data file
   df: pd.DataFrame | None = None       # loaded from data_path
   df_clean: pd.DataFrame | None = None # to be filled after preprocessing
+  time_resolution: int = 15    # Time resolution in minutes
   time_column: str = ""       # name of the time column
   series_column: str = ""     # name of the target series column 
   start_time: str = ""      # First time for slicing the raw data
@@ -42,6 +46,7 @@ class Config_Manager:
   def run(self):
     '''Main method to run the whole process.'''
     self.set_paths()
+    self.horizon_to_string()
     self.save_or_load_config()
 
   def save_or_load_config(self):
@@ -68,7 +73,17 @@ class Config_Manager:
     print(f"History path set to: {self.history_path}")
     print(f"Config path set to: {self.config_path}")
 
+  def horizon_to_string(self):
+    "Converts horizon time step into human readable string"
+
+    # Total duration
+    total_min = self.horizon * self.time_resolution
+    delta = dt.timedelta(minutes=total_min)
+
+    # 'precisedelta' turns 60 min" into "1 hour"
+    self.horizon_string = humanize.precisedelta(delta)
+
 # Dictionary to tranlate raw columns names in the database
 # into labels for plots
 variables_dictionary = {'NL_wind_generation_actual':
-                      'Actual NL Wind Generation [MW]'}
+                       'Actual NL Wind Generation [MW]'}

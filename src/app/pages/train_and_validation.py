@@ -1,8 +1,9 @@
 import streamlit as st
 from src import plot
 from src.app.load import load_app_data
+from src.app.app_config import config
 
-config, data, model = load_app_data()
+data, model = load_app_data()
 
 st.header("Train and Test Datasets")
 
