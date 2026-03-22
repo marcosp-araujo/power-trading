@@ -284,21 +284,30 @@ def scatter(model,
         yaxis_title=y_label,
         xaxis=dict(
             range=xlim,
+            constrain='domain',
             scaleanchor="y", 
-            scaleratio=1
+            scaleratio=1,
+            automargin=True
         ),
         yaxis=dict(
             range=ylim,
-            constrain='domain'
+            constrain='domain',
+            scaleanchor="x", # Explicitly link both ways
+            scaleratio=1,
+            automargin=True
         ),
-        width=600, 
-        height=600,
-        legend=dict(
-            yanchor="top", 
-            xanchor="left", 
-            bgcolor="rgba(255, 255, 255, 0.5)"
+        width=650, 
+        height=500,
+            
+            legend=dict(
+                yanchor="top",
+                y=1,
+                xanchor="left",
+                x=1.02, # Moves legend just to the right of the plot boundary
+                bgcolor="rgba(255, 255, 255, 0.5)"
+            ),
+        margin=dict(l=50, r=150, t=50, b=50) # Extra 'r' (right) margin for the legend
         )
-    )
 
     if streamlit:
         st.plotly_chart(fig, width='stretch') # False to respect the 600x600 square
