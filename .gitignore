@@ -1,0 +1,9 @@
+/documents
+__pycache__/
+config/
+
+.venv/
+
+database.sqlite
+main_api.py
+token.json
