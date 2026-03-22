@@ -8,19 +8,18 @@ config, data, model = load_app_data()
 st.header("Power Trading Forecasting Dashboard")
 
 st.write(
-"This dashboard showcases a Short-Term Wind Power Forecasting model designed for the Netherlands' Intraday Energy Market. "
+"This dashboard template showcases a Short-Term Wind Power Forecasting model to support Intraday Energy Market. "
 f"Utilizing a Neural Network architecture, the system predicts generation {data.config.horizon_string} ahead by analyzing a 12-hour rolling window of historical data."
 )
 
 st.write(
-"The dataset used in this project was obtained from the "
+"The example dataset used in this project was obtained from the "
 "[Open Power System Data](https://data.open-power-system-data.org/time_series/) platform, "
 "which provides free and open datasets for power system analysis. "
-"The selected data consists of wind power generation in the Netherlands from 1 January to 31 March, "
-"recorded at a 15-minute frequency."
+"The selected data consists of wind power generation in the Netherlands from 1 January to 31 March, recorded at a 15-minute frequency."
 )
 
-st.write("Use the sidebar to audit the model’s convergence, visualize real-time forecasts, and evaluate performance against industry-standard benchmarks.")
+st.write("Use the sidebar to audit the model’s convergence, forecast, and evaluate its performance.")
 
 # Dataset
 plot.series(

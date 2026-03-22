@@ -1,9 +1,10 @@
 # 🌬️ Wind Power Forecasting
 
-This repository provides an Artificial Intelligence (AI) solution for wind power forecasting in the **Netherlands**. By analyzing 12-hour rolling windows of historical data, the model predicts generation for the next **1-hour**. 
+This repository provides an Artificial Intelligence (AI) solution for wind power forecasting. By analyzing 12-hour rolling windows of historical data, the model predicts power generation for the next **hour**.
 
-This tool can be used to assist energy traders in optimizing intraday positions and minimizing imbalance settlement costs on the Dutch grid.
+This tool can assist energy traders in optimizing intraday positions and minimizing imbalance settlement costs on the grid. An example wind power dataset from the Netherlands is used. It was obtained from [Open Power System Data](https://data.open-power-system-data.org/time_series/) platform.
 
+The repository provides a backend tool to train new models and a interactive dashboard template to audit the model forecast and performance.
 ---
 
 ## 🚀 Features
