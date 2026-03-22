@@ -5,6 +5,7 @@ This repository provides an Artificial Intelligence (AI) solution for wind power
 This tool can assist energy traders in optimizing intraday positions and minimizing imbalance settlement costs on the grid. An example wind power dataset from the Netherlands is used. It was obtained from [Open Power System Data](https://data.open-power-system-data.org/time_series/) platform.
 
 The repository provides a backend tool to train new models and a interactive dashboard template to audit the model forecast and performance.
+
 ---
 
 ## 🚀 Features
