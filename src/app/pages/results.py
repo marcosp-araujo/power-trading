@@ -19,7 +19,7 @@ plot.scatter(model=model, streamlit=True)
 st.markdown(f"""
 #### Model KPIs
 
-The key performance indicators below highlight the goodness of fit of the model regardin mean absolute error (MAE), Normalized Mean Absolute Error (NMAE), and Root Mean Squared Error (RMSE).
+The key performance indicators below highlight the goodness of fit of the model regardin mean absolute error (MAE), normalized mean absolute error (NMAE), and root mean squared error (RMSE).
 
 The NMAE is calculated as:
 
