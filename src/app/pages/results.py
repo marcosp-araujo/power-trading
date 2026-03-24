@@ -12,14 +12,14 @@ st.write("The forecasted time series accurately captures the trends observed in 
 plot.forecast(model, streamlit=True)
 
 st.subheader("Performance")
-st.write(f"A coefficient of determination close to 1 was obtained when comparing the forecasted and reference data, indicating strong model performance.")
+st.write(f"A coefficient of determination, R², sclose to 1 was obtained when comparing the forecasted and reference data, indicating strong model performance.")
 
 plot.scatter(model=model, streamlit=True)
 
 st.markdown(f"""
 #### Model KPIs
 
-The key performance indicators below highlight the goodness of fit of the model regardin mean absolute error (MAE), The Normalized Mean Absolute Error (NMAE), and Root Mean Squared Error (RMSE).
+The key performance indicators below highlight the goodness of fit of the model regardin mean absolute error (MAE), Normalized Mean Absolute Error (NMAE), and Root Mean Squared Error (RMSE).
 
 The NMAE is calculated as:
 
