@@ -1,8 +1,8 @@
 import streamlit as st
-from src import plot
+from src.libs import plot
 from src.app.load import load_app_data
 
-data, model = load_app_data()
+model = load_app_data()
 results = model.metrics()
 
 st.subheader("Forecasting Result")
@@ -19,7 +19,7 @@ plot.scatter(model=model, streamlit=True)
 st.markdown(f"""
 #### Model KPIs
 
-The key performance indicators below highlight the goodness of fit of the model regardin mean absolute error (MAE), Normalized Mean Absolute Error (NMAE), and Root Mean Squared Error (RMSE).
+The key performance indicators below highlight the goodness of fit of the model regardin mean absolute error (MAE), normalized mean absolute error (NMAE), and root mean squared error (RMSE).
 
 The NMAE is calculated as:
 

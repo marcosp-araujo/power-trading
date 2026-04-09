@@ -1,6 +1,7 @@
 /documents
 __pycache__/
 config/
+repository/
 
 models/model_v1_7_w12h_1day_ahead/
 

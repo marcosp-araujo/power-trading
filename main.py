@@ -1,13 +1,16 @@
 #%% Imports ------------------------------------------------
+import os
+os.environ["KERAS_BACKEND"] = "jax"
 
-from src.config_tools import Config_Manager
-from src import data_tools, model_tools, plot
+from src.libs.config_tools import Config_Manager
+from src.libs import plot
+from src.libs.processing_chain import processing_chain
 
 if __name__ == "__main__":
 
     config = Config_Manager(
-                    mode="train", # "train" or "load"
-                    model_name="model_v1_6_w12h_1h_ahead",
+                    mode="load", # "train" or "load"
+                    model_name="model_v1_7_w12h_1h_ahead",
                     data_path="data/time_series_15min.parquet",
                     time_resolution=15, # Data time resolution in minutes
                     series_column="NL_wind_generation_actual",
@@ -26,23 +29,21 @@ if __name__ == "__main__":
 
     #%% Preprocessing the data --------------
 
-    data = data_tools.Data_Manager(config)
-    plot.train_test(data, config)
-    
-    #%% Creating a model manager object
+    model = processing_chain(config)
 
-    model = model_tools.Model_Manager(data, config)
+    #%% Plotting the training and validation datasets
 
-    #%%
+    plot.train_test(model.data, config)
+
+    #%% Plotting the training history
 
     plot.metrics_history(model.history)
     
-    #%% Forecasting ----------------------------
+    #%% Plotting the forecast
 
-    model.compute_forecast(delay=1)
     plot.forecast(model)     
-    
-    #%% PERFORMANCE
+
+    #%% Showing the evaluation metrics
 
     results = model.metrics()
     for key, item in results.items():

@@ -1,28 +1,19 @@
 import streamlit as st
-from src import data_tools, model_tools
 from src.app.app_config import load_config
+from src.libs.processing_chain import processing_chain
 
 @st.cache_resource
-def load_data(config):
-    return data_tools.Data_Manager(config)
-
-@st.cache_resource
-def load_model(_data, config):
-    return model_tools.Model_Manager(_data, config)
+def load_model(config):
+    return processing_chain(config)
 
 def load_app_data():
 
     config = load_config()
 
-    if "data" not in st.session_state:
-        st.session_state.data = load_data(config)
-
-    data = st.session_state.data
-
     if "model" not in st.session_state:
-        st.session_state.model = load_model(data, config)
+        st.session_state.model = load_model(config)
 
     model = st.session_state.model
-    model.compute_forecast()
+    model.compute_forecast_numpy()
 
-    return data, model
+    return model

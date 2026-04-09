@@ -1,12 +1,15 @@
+import os
+os.environ["KERAS_BACKEND"] = "jax"
+
 import streamlit as st
 from pathlib import Path
 
 st.set_page_config(page_title="Time Series Forecasting", 
                    page_icon="📈")
+st.markdown("""<style>.block-container {padding-top: 2rem;}</style>""", 
+                unsafe_allow_html=True)
 
 if __name__ == "__main__":
-
-    st.markdown("""<style>.block-container {padding-top: 2rem;}</style>""", unsafe_allow_html=True)
 
     pages_dir = Path("src/app/pages")
 

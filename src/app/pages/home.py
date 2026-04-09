@@ -1,6 +1,6 @@
 import streamlit as st
-from src import plot
-from src.plot import plot_obj
+from src.libs import plot
+from src.libs.plot import plot_obj
 from src.app.load import load_app_data
 from src.app.app_config import load_config
 
@@ -22,13 +22,13 @@ st.write(
 
 st.write("Use the sidebar to audit the model’s convergence, forecast, and evaluate its performance.")
 
-data, model = load_app_data()
+model = load_app_data()
 
 # Dataset
 plot.series(
     plot_obj(
-            data.df_clean[config.time_column],
-            data.df_clean[config.series_column],
+            model.data.df_clean[config.time_column],
+            model.data.df_clean[config.series_column],
             config.series_column
             ),
     title = "Wind power generation in the Netherlands.",
