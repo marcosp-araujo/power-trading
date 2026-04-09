@@ -1,0 +1,19 @@
+# Folders
+**.venv
+.git
+__pycache__
+*.pyc
+
+.uv/
+.git/
+.github/
+.ipynb_checkpoints/
+.repository/
+
+# Files
+*.pyc
+*.pyo
+*.pyd
+database.sqlite
+token.json
+main_api.py
