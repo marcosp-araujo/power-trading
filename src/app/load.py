@@ -14,6 +14,5 @@ def load_app_data():
         st.session_state.model = load_model(config)
 
     model = st.session_state.model
-    model.compute_forecast_numpy()
 
     return model
