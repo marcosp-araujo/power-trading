@@ -1,18 +1,18 @@
 import streamlit as st
+import pickle
 from src.app.app_config import load_config
-from src.libs.processing_chain import processing_chain
 
 @st.cache_resource
 def load_model(config):
-    return processing_chain(config)
+    return pickle.load(open(f"{config.model_out_path}", "rb"))
 
 def load_app_data():
 
     config = load_config()
 
     if "model" not in st.session_state:
-        st.session_state.model = load_model(config)
+        st.session_state.model_output = load_model(config)
 
-    model = st.session_state.model
+    model_output = st.session_state.model_output
 
-    return model
+    return model_output

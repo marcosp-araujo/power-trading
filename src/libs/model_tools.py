@@ -1,3 +1,5 @@
+from xml.parsers.expat import model
+
 import pandas as pd
 import numpy as np
 from src.libs.config_tools import Config_Manager
@@ -79,16 +81,11 @@ class Model_Manager:
     return results
   
 class Model_Output:
-    def __init__(self, data, time_forecast, forecast, x_valid_adjusted, history):
-        # Build dataframe
-        self.time_forecast = time_forecast
-        self.forecast = forecast  
-        self.x_valid_adjusted = x_valid_adjusted
-        self.history = history
-        self.data = data
-
-    def to_dataframe(self):
-        return self.data
-
-    def get_history(self):
-        return self.history
+  def __init__(self, data, model:Model_Manager):
+    # Build dataframe
+    self.data = data
+    self.time_forecast = model.time_forecast
+    self.forecast = model.forecast  
+    self.x_valid_adjusted = model.x_valid_adjusted
+    self.history = model.history
+    self.results = model.metrics()

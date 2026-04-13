@@ -3,6 +3,7 @@ from src.libs import plot
 from src.libs.plot import plot_obj
 from src.app.load import load_app_data
 from src.app.app_config import load_config
+from src.libs.model_tools import Model_Output
 
 config = load_config()
 
@@ -22,13 +23,13 @@ st.write(
 
 st.write("Use the sidebar to audit the model’s convergence, forecast, and evaluate its performance.")
 
-model = load_app_data()
+model_output: Model_Output = load_app_data()
 
 # Dataset
 plot.series(
     plot_obj(
-            model.data.df_clean[config.time_column],
-            model.data.df_clean[config.series_column],
+            model_output.data.df_clean[config.time_column],
+            model_output.data.df_clean[config.series_column],
             config.series_column
             ),
     title = "Wind power generation in the Netherlands.",

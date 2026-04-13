@@ -9,7 +9,7 @@ from src.libs.processing_chain import processing_chain
 if __name__ == "__main__":
 
     config = Config_Manager(
-                    mode="load", # "train" or "load"
+                    mode="train", # "train" or "load"
                     model_name="model_v1_7_w12h_1h_ahead",
                     data_path="data/time_series_15min.parquet",
                     time_resolution=15, # Data time resolution in minutes
@@ -29,24 +29,24 @@ if __name__ == "__main__":
 
     #%% Preprocessing the data --------------
 
-    model = processing_chain(config)
+    model, model_output = processing_chain(config)
 
     #%% Plotting the training and validation datasets
 
-    plot.train_test(model.data, config)
+    plot.train_test(model_output.data, config)
 
     #%% Plotting the training history
 
-    plot.metrics_history(model.history)
+    plot.metrics_history(model_output.history)
     
     #%% Plotting the forecast
 
-    plot.forecast(model)     
+    plot.forecast(model_output)     
 
     #%% Showing the evaluation metrics
 
-    results = model.metrics()
-    for key, item in results.items():
+    
+    for key, item in model_output.results.items():
         print(f"{key}: {item:.2f}")
 
 # %%

@@ -3,10 +3,9 @@ import pandas as pd
 import numpy as np
 import plotly.graph_objects as go
 from typing import Literal
-from src.libs.model_tools import Model_Manager
+from src.libs.model_tools import Model_Output
 from src.libs.data_tools import Data_Manager
-from src.libs.config_tools import Config_Manager
-from src.libs.config_tools import variables_dictionary
+from src.libs.config_tools import Config_Manager, variables_dictionary
 
 class plot_obj:
     time: pd.Series
@@ -91,18 +90,18 @@ def series(
     else:
         fig.show()
 
-def forecast(model:Model_Manager, 
-             streamlit:bool=False,
+def forecast(model_output: Model_Output, 
+             streamlit:bool=False
              ) -> None:
     '''Plots the actual vs forecasted values using Plotly.'''
-    ajust = model.config.horizon
-    time_valid = model.data.time_valid[ajust:]
-    x_valid = model.data.x_valid[ajust:]
-    time_forecast = model.time_forecast
-    forecast = model.forecast
+    ajust = model_output.data.config.horizon
+    time_valid = model_output.data.time_valid[ajust:]
+    x_valid = model_output.data.x_valid[ajust:]
+    time_forecast = model_output.time_forecast
+    forecast = model_output.forecast
 
     # Correcting ylabel
-    ylabel = model.config.series_column
+    ylabel = model_output.data.config.series_column
     ylabel = variables_dictionary.get(ylabel, ylabel)
     ylabel = ylabel.replace("Actual","")
     series(
@@ -226,7 +225,7 @@ def plot_sliding_window(data:Data_Manager,
         streamlit=True
     )
 
-def scatter(model, 
+def scatter(model_output: Model_Output, 
             x_label="Validation", 
             y_label="Forecast",
             xlim=[0, 3000], 
@@ -236,8 +235,8 @@ def scatter(model,
     Creates and displays an interactive scatter plot using Plotly with 
     linear regression and forced squared aspect ratio.
     """
-    x = model.x_valid_adjusted
-    y = model.forecast
+    x = model_output.x_valid_adjusted
+    y = model_output.forecast
 
     # 1. Calculate Linear Regression
     x_arr = np.array(x)

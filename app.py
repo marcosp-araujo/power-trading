@@ -1,7 +1,6 @@
+import streamlit as st
 import os
 os.environ["KERAS_BACKEND"] = "jax"
-
-import streamlit as st
 from pathlib import Path
 
 st.set_page_config(page_title="Time Series Forecasting", 

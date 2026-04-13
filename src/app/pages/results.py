@@ -3,7 +3,6 @@ from src.libs import plot
 from src.app.load import load_app_data
 
 model = load_app_data()
-results = model.metrics()
 
 st.subheader("Forecasting Result")
 
@@ -14,7 +13,7 @@ plot.forecast(model, streamlit=True)
 st.subheader("Performance")
 st.write(f"A coefficient of determination, R², sclose to 1 was obtained when comparing the forecasted and reference data, indicating strong model performance.")
 
-plot.scatter(model=model, streamlit=True)
+plot.scatter(model, streamlit=True)
 
 st.markdown(f"""
 #### Model KPIs
@@ -25,13 +24,13 @@ The NMAE is calculated as:
 
         NMAE = MAE / Capacity,
 
-where the capacity = {results["capacity"]:.1f} MW, defined as the maximum wind power observed in the dataset.
+where the capacity = {model.results["capacity"]:.1f} MW, defined as the maximum wind power observed in the dataset.
 """)
 
 # Metrics display
 col1, col2, col3 = st.columns(3)
 
-col1.metric("MAE", f"{results['mae']:.2f} MW")
-col2.metric("NMAE", f"{results['nmae']:.2f} %")
-col3.metric("RMSE", f"{results['rmse']:.2f} MW")
+col1.metric("MAE", f"{model.results['mae']:.2f} MW")
+col2.metric("NMAE", f"{model.results['nmae']:.2f} %")
+col3.metric("RMSE", f"{model.results['rmse']:.2f} MW")
 
