@@ -23,5 +23,6 @@
     "tf_model_path": "models/model_v1_7_w12h_1h_ahead/model_v1_7_w12h_1h_ahead.keras",
     "model_path": "models/model_v1_7_w12h_1h_ahead/model_v1_7_w12h_1h_ahead.pkl",
     "history_path": "models/model_v1_7_w12h_1h_ahead/model_v1_7_w12h_1h_ahead_history.pkl",
-    "config_path": "models/model_v1_7_w12h_1h_ahead/model_v1_7_w12h_1h_ahead_config.json"
+    "config_path": "models/model_v1_7_w12h_1h_ahead/model_v1_7_w12h_1h_ahead_config.json",
+    "model_out_path": "models/model_v1_7_w12h_1h_ahead/model_v1_7_w12h_1h_ahead_forecast.pkl"
 }
