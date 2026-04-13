@@ -47,6 +47,7 @@ class Config_Manager:
   model_path: str = field(init=False)
   history_path: str = field(init=False)
   config_path: str = field(init=False)
+  model_out_path: str = field(init=False)
 
   def run(self):
     '''Main method to run the whole process.'''
@@ -74,10 +75,12 @@ class Config_Manager:
     self.model_path = f"{self.model_folder}/{self.model_name}.pkl"
     self.history_path = f"{self.model_folder}/{self.model_name}_history.pkl"
     self.config_path = f"{self.model_folder}/{self.model_name}_config.json"
+    self.model_out_path = f"{self.model_folder}/{self.model_name}_forecast.pkl"
     print(f"Model folder set to: {self.model_folder}")
     print(f"TensorFlow model path set to: {self.tf_model_path}")
     print(f"History path set to: {self.history_path}")
     print(f"Config path set to: {self.config_path}")
+    print(f"Forecast path set to: {self.model_out_path}")
 
   def horizon_to_string(self):
     "Converts horizon time step into human readable string"
