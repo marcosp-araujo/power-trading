@@ -15,10 +15,8 @@ def processing_chain(config: Config_Manager):
         print("Training a new model.") 
         data = data_tools.Data_Manager(config)
         model = model_tools.Model_Manager(data, config)
-        model_output = model_tools.Model_Output(
-                    data=data,
-                    model=model,
-        )   
+        model_output = model_tools.Model_Output(data=data, model=model)
+          
         # Deleting the model attribute before saving to avoid issues with Keras models and pickling
         pickle.dump(model, open(f"{config.model_path}", "wb"))
 

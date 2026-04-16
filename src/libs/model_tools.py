@@ -87,5 +87,5 @@ class Model_Output:
     self.time_forecast = model.time_forecast
     self.forecast = model.forecast  
     self.x_valid_adjusted = model.x_valid_adjusted
-    self.history = model.history
+    self.history = model.history.history
     self.results = model.metrics()
