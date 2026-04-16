@@ -71,11 +71,11 @@ class Config_Manager:
   def set_paths(self):
     self.model_folder = f"models/{self.model_name}"
     os.makedirs(f"{self.model_folder}", exist_ok=True)
-    self.tf_model_path = f"{self.model_folder}/{self.model_name}.keras"
-    self.model_path = f"{self.model_folder}/{self.model_name}.pkl"
-    self.history_path = f"{self.model_folder}/{self.model_name}_history.pkl"
-    self.config_path = f"{self.model_folder}/{self.model_name}_config.json"
-    self.model_out_path = f"{self.model_folder}/{self.model_name}_forecast.pkl"
+    self.tf_model_path = f"{self.model_folder}/model.keras"
+    self.model_path = f"{self.model_folder}/model_object.pkl"
+    self.history_path = f"{self.model_folder}/history.pkl"
+    self.config_path = f"{self.model_folder}/config.json"
+    self.model_out_path = f"{self.model_folder}/model_output.pkl"
     print(f"Model folder set to: {self.model_folder}")
     print(f"TensorFlow model path set to: {self.tf_model_path}")
     print(f"History path set to: {self.history_path}")
