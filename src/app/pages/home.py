@@ -7,7 +7,7 @@ from src.libs.model_tools import Model_Output
 
 config = load_config()
 
-st.header("Power Trading Forecasting Dashboard")
+st.header("Wind Power Forecasting Model")
 
 st.write(
 "This dashboard template showcases a Short-Term Wind Power Forecasting model to support Intraday Energy Market. "

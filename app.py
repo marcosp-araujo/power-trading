@@ -3,7 +3,7 @@ import os
 os.environ["KERAS_BACKEND"] = "jax"
 from pathlib import Path
 
-st.set_page_config(page_title="Time Series Forecasting", 
+st.set_page_config(page_title="Power Forecasting", 
                    page_icon="📈")
 st.markdown("""<style>.block-container {padding-top: 2rem;}</style>""", 
                 unsafe_allow_html=True)
