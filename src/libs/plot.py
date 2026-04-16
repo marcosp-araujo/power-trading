@@ -138,21 +138,21 @@ def metrics_history(history, streamlit:bool=False) -> None:
     
     # 1. Extract Metrics
     # We use .get() to avoid errors if validation data wasn't provided
-    mae = history.history.get("mae", [])
-    val_mae = history.history.get("val_mae", [])
-    loss = history.history.get("loss", [])
-    val_loss = history.history.get("val_loss", [])
+    mae = history.get("mae", [])
+    val_mae = history.get("val_mae", [])
+    loss = history.get("loss", [])
+    val_loss = history.get("val_loss", [])
     
-    epochs = list(range(len(loss)))
+    epochs = np.arange(len(loss)) + 1 # For 1-based epoch numbering in the plot
     title_base = "Model training and validation history "
 
     # 2. Full History Plot
     # Grouping related metrics helps visualize the gap between Train and Val
     series(
-        plot_obj(epochs, mae, "Train MAE"),
-        plot_obj(epochs, val_mae, "Val MAE"),
-        plot_obj(epochs, loss, "Train Loss"),
-        plot_obj(epochs, val_loss, "Val Loss"),
+        plot_obj(epochs, mae, "Train MAE", mode='markers+lines'),
+        plot_obj(epochs, loss, "Train Loss", mode='markers+lines'),
+        plot_obj(epochs, val_mae, "Val MAE", mode='markers+lines'),
+        plot_obj(epochs, val_loss, "Val Loss", mode='markers+lines'),
         xlabel="Epochs",
         ylabel="Metric Value",
         title=title_base + "(full).",
@@ -164,10 +164,10 @@ def metrics_history(history, streamlit:bool=False) -> None:
     epochs_zoom = epochs[zoom_split:]
     
     series(
-        plot_obj(epochs_zoom, mae[zoom_split:], "Train MAE"),
-        plot_obj(epochs_zoom, val_mae[zoom_split:], "Val MAE"),
-        plot_obj(epochs_zoom, loss[zoom_split:], "Train Loss"),
-        plot_obj(epochs_zoom, val_loss[zoom_split:], "Val Loss"),
+        plot_obj(epochs_zoom, mae[zoom_split:], "Train MAE", mode='markers+lines'),
+        plot_obj(epochs_zoom, val_mae[zoom_split:], "Val MAE", mode='markers+lines'),
+        plot_obj(epochs_zoom, loss[zoom_split:], "Train Loss", mode='markers+lines'),
+        plot_obj(epochs_zoom, val_loss[zoom_split:], "Val Loss", mode='markers+lines'),
         xlabel="Epochs",
         ylabel="Metric Value",
         title=title_base + "(zoomed - last 50% epochs).",
